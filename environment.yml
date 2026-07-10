@@ -1,0 +1,17 @@
+name: spring26cnsproject
+channels:
+  - conda-forge
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+  - brian-team
+dependencies:
+  - brian2=2.10.1
+  - ipykernel
+  - numpy=2.4.2
+  - python=3.14.2
+  - scipy=1.17.0
+  - brian2tools=0.3
+  - ipython
+  - matplotlib=3.10.8
+  - notebook=7.5.3
+  - pytest=9.0.2
