@@ -4,8 +4,19 @@ import numpy as np
 from brian2 import *
 from pathlib import Path
 import math
+import os 
 
-OUT_DIR = Path('/home/joncineus/Spring2026-CompNeuro/Reproduction_of_AugustinZylbertalPartridge2019/')
+# List the files and folders that are in the folder
+list_of_files = os.listdir()
+
+# If the folder for the 'figure_2_output' 
+if 'figure_2_output' in list_of_files:
+    pass
+else:
+    os.mkdir('figure_2_output')
+
+
+OUT_DIR = Path('figure_2_output')
 
 LANDSCAPE_CACHE = OUT_DIR / 'brian2_fixed_gap_latency_landscapes.npz'
 LANDSCAPE_PNG = OUT_DIR / 'brian2_fixed_gap_latency_landscapes.png'
