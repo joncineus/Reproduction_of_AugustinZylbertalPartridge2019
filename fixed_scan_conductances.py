@@ -6,7 +6,6 @@ from pathlib import Path
 import math
 
 OUT_DIR = Path('/home/joncineus/Spring2026-CompNeuro/Reproduction_of_AugustinZylbertalPartridge2019/')
-
 LANDSCAPE_CACHE = OUT_DIR / 'brian2_fixed_gap_latency_landscapes.npz'
 LANDSCAPE_PNG = OUT_DIR / 'brian2_fixed_gap_latency_landscapes.png'
 FORCE_RECOMPUTE_LANDSCAPES = False
@@ -126,7 +125,7 @@ if landscape_errors:
     if len(landscape_errors) > 10:
         print(f'  ... {len(landscape_errors) - 10} more')
 
-fig, axes = plt.subplots(2, 3, figsize=(15.5, 8.8), sharey=True, constrained_layout=True)
+fig, axes = plt.subplots(2, 3, figsize=(15.5, 8.8), sharey=True, constrained_layout=False)
 for col, spec in enumerate(landscape_specs):
     xs = landscape_results[f"{spec['key']}_values"]
     ys = landscape_results['gap_ns']
@@ -158,7 +157,9 @@ for col, spec in enumerate(landscape_specs):
         cbar.set_label('Latency (ms)')
 
 handles, labels = axes[0, 0].get_legend_handles_labels()
-fig.legend(handles[:2], labels[:2], loc='upper center', ncol=2, frameon=False)
+
+# The labels for each old fly a new conductances
+fig.legend(handles[:2], labels[:2], loc='upper right', ncol=2, frameon=False)
 fig.suptitle('Brian2 fixed-copy latency landscapes, paper gap units', fontsize=15)
 fig.savefig(LANDSCAPE_PNG, dpi=180, bbox_inches='tight')
 plt.show()
